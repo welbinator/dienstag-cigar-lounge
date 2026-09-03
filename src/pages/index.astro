@@ -1,0 +1,123 @@
+---
+import Layout from "../layouts/Layout.astro";
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+<Layout title="Dienstag Cigar Lounge — North Liberty, Iowa" active="home">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-media" style={`background-image: url(${base}/images/hero.jpg)`}></div>
+    <div class="hero-veil"></div>
+    <div class="wrap hero-inner">
+      <p class="eyebrow rise">North Liberty · Iowa</p>
+      <h1 class="rise">A room worth<br /><em>lingering in.</em></h1>
+      <p class="hero-sub rise">Dienstag is a cigar lounge built for the unhurried hour — a good smoke, a pour from the bar next door, and no reason to check the time.</p>
+      <div class="hero-actions rise">
+        <a class="btn btn-solid" href={`${base}/membership`}>Become a Member</a>
+        <a class="btn btn-ghost" href={`${base}/selection`}>See the Selection</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <section>
+    <div class="wrap two-col">
+      <div class="rise">
+        <p class="eyebrow">The idea</p>
+        <h2>Cigars, whiskey, and the art of staying a while.</h2>
+      </div>
+      <div class="rise">
+        <p>Some evenings deserve more than a quick drink. Dienstag is where you settle into a worn leather chair, light something you've been saving, and let the conversation run long.</p>
+        <p>We share our home with WineStyles, so a full bar is always a few steps away — pour a whiskey, open a bottle, and bring it back to your seat.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hairline wrap-line" />
+
+  <!-- OFFERINGS -->
+  <section>
+    <div class="wrap">
+      <p class="eyebrow rise">What you'll find</p>
+      <h2 class="rise section-title">Built around the good hours.</h2>
+      <div class="grid-3">
+        <article class="card rise">
+          <span class="card-mark">01</span>
+          <h3>A considered humidor</h3>
+          <p>A rotating shelf of cigars kept at the proper humidity — familiar staples alongside a few we think you should try.</p>
+        </article>
+        <article class="card rise">
+          <span class="card-mark">02</span>
+          <h3>The bar next door</h3>
+          <p>Sharing space with WineStyles means a full bar within reach — whiskey, wine, and a bartender who knows the pairings.</p>
+        </article>
+        <article class="card rise">
+          <span class="card-mark">03</span>
+          <h3>Members' lockers</h3>
+          <p>Keep your own cigars on hand. Monthly members get a personal locker, so your collection is always waiting when you are.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEMBERSHIP CTA BAND -->
+  <section class="band">
+    <div class="wrap band-inner rise">
+      <div>
+        <p class="eyebrow">Membership</p>
+        <h2>Your chair. Your locker. Your lounge.</h2>
+        <p class="band-sub">Members get their own locker, first word on events, and a standing seat in the room. Monthly, and worth it.</p>
+      </div>
+      <a class="btn btn-solid" href={`${base}/membership`}>View Membership</a>
+    </div>
+  </section>
+
+  <!-- VISIT -->
+  <section>
+    <div class="wrap two-col">
+      <div class="rise">
+        <p class="eyebrow">Find us</p>
+        <h2>North Liberty, Iowa.</h2>
+        <p>680 Mead Drive, Suite 5<br />North Liberty, Iowa</p>
+        <p class="muted">Inside WineStyles — look for the crown.</p>
+        <a class="btn btn-ghost" href={`${base}/contact`} style="margin-top:1rem">Plan a Visit</a>
+      </div>
+      <div class="rise visit-note card">
+        <h3>Before you come</h3>
+        <p>We're finalizing hours and the reservation details for the lounge. Reach out through the contact page and we'll make sure you're the first to know when the doors open.</p>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .hero { position: relative; min-height: 88vh; display: flex; align-items: center; }
+    .hero-media { position: absolute; inset: 0; background-size: cover; background-position: center; background-color: #0d0700; }
+    .hero-veil { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,11,0,0.55) 0%, rgba(20,11,0,0.72) 55%, rgba(20,11,0,0.96) 100%); }
+    .hero-inner { position: relative; z-index: 2; padding-block: 6rem; }
+    .hero h1 { margin: 0.6rem 0 1.4rem; }
+    .hero h1 em { color: var(--gold); font-style: italic; }
+    .hero-sub { font-size: 1.2rem; max-width: 46ch; color: var(--cream); opacity: 0.9; }
+    .hero-actions { display: flex; gap: 1rem; margin-top: 2.2rem; flex-wrap: wrap; }
+
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: start; }
+    .two-col h2 { margin-top: 0.5rem; }
+    .two-col p + p { margin-top: 1rem; }
+    .wrap-line { width: min(100% - 48px, var(--max)); margin-inline: auto; }
+    .section-title { margin: 0.5rem 0 2.5rem; }
+
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap); }
+    .card-mark { font-family: var(--font-display); font-size: 1.1rem; color: var(--gold); letter-spacing: 0.1em; }
+    .card h3 { margin: 0.8rem 0 0.6rem; }
+
+    .band { background: linear-gradient(120deg, #1d1206, #241708); border-block: 1px solid var(--walnut); }
+    .band-inner { display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+    .band-inner h2 { margin: 0.4rem 0 0.8rem; }
+    .band-sub { max-width: 48ch; }
+
+    .visit-note { align-self: stretch; }
+
+    @media (max-width: 860px) {
+      .two-col, .grid-3, .band-inner { grid-template-columns: 1fr; }
+      .hero { min-height: 78vh; }
+    }
+  </style>
+</Layout>

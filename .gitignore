@@ -1,0 +1,25 @@
+# build output
+dist/
+.astro/
+
+# dependencies
+node_modules/
+
+# env / secrets
+.env
+.env.*
+!.env.example
+
+# wrangler
+.wrangler/
+
+# db
+*.db
+*.db-*
+
+# raw asset workspace (keep only public/ shipped images)
+assets/
+
+# os / editor
+.DS_Store
+.vscode/

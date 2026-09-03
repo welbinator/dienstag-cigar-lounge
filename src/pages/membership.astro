@@ -1,0 +1,58 @@
+---
+import Layout from "../layouts/Layout.astro";
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const perks = [
+  { t: "Your own locker", d: "A personal humidor locker to store your cigars on-site — always at the right humidity, always waiting for you." },
+  { t: "A standing seat", d: "You're not a guest here, you're a regular. Come in, sit down, and settle into the room whenever you like." },
+  { t: "First to know", d: "Members hear about tastings, releases, and lounge events before anyone else." },
+  { t: "The full bar, next door", d: "WineStyles' whiskey and wine are always a few steps away — bring a pour back to your chair." },
+];
+---
+<Layout title="Membership — Dienstag Cigar Lounge" active="membership" description="Monthly membership with a personal cigar locker at Dienstag Cigar Lounge, North Liberty, Iowa.">
+  <section class="page-head">
+    <div class="wrap">
+      <p class="eyebrow rise">Membership</p>
+      <h1 class="rise">A place that's<br /><em>yours.</em></h1>
+      <p class="lead rise">Membership at Dienstag is monthly and simple: your own locker, your own seat, and a room that feels like it was waiting for you. Here's what comes with it.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="perk-grid">
+        {perks.map((p, i) => (
+          <article class="card perk rise">
+            <span class="card-mark">{String(i + 1).padStart(2, "0")}</span>
+            <h3>{p.t}</h3>
+            <p>{p.d}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap join-card rise">
+      <p class="eyebrow">Monthly membership</p>
+      <h2>Reserve your locker.</h2>
+      <p class="join-sub">We're setting up membership now and building the first roster. Reach out and we'll walk you through pricing, lockers, and opening details — and hold a spot for you.</p>
+      <a class="btn btn-solid" href={`${base}/contact`}>Request Membership</a>
+      <p class="fine muted">Pricing and locker availability confirmed directly — no guesswork, no surprises.</p>
+    </div>
+  </section>
+
+  <style>
+    .page-head { padding-top: 5rem; padding-bottom: 2rem; }
+    .page-head h1 { margin: 0.6rem 0 1.2rem; }
+    .page-head h1 em { color: var(--gold); font-style: italic; }
+    .lead { font-size: 1.2rem; max-width: 54ch; color: var(--cream); opacity: 0.9; }
+    .perk-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap); }
+    .perk h3 { margin: 0.8rem 0 0.6rem; }
+    .band { background: linear-gradient(120deg,#1d1206,#241708); border-block: 1px solid var(--walnut); }
+    .join-card { max-width: 640px; text-align: center; margin-inline: auto; }
+    .join-card h2 { margin: 0.4rem 0 1rem; }
+    .join-sub { max-width: 48ch; margin: 0 auto 1.8rem; }
+    .fine { font-size: 0.8rem; margin-top: 1.2rem; }
+    @media (max-width: 860px) { .perk-grid { grid-template-columns: 1fr; } }
+  </style>
+</Layout>

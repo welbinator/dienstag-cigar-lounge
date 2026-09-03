@@ -1,0 +1,204 @@
+---
+export interface Props {
+  title: string;
+  description?: string;
+  active?: string;
+}
+const { title, description = "Dienstag Cigar Lounge — a warm, members-only cigar and whiskey lounge in North Liberty, Iowa.", active = "" } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const isStaging = base !== "";
+const nav = [
+  { href: `${base}/`, label: "Home", key: "home" },
+  { href: `${base}/selection`, label: "Selection", key: "selection" },
+  { href: `${base}/membership`, label: "Membership", key: "membership" },
+  { href: `${base}/contact`, label: "Contact", key: "contact" },
+];
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {isStaging && <meta name="robots" content="noindex, nofollow" />}
+    <link rel="icon" type="image/png" href={`${base}/images/crown-gold.png`} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href={`${base}/`} aria-label="Dienstag Cigar Lounge home">
+        <img src={`${base}/images/logo-light.png`} alt="Dienstag Cigar Lounge" />
+      </a>
+      <nav class="nav" aria-label="Primary">
+        {nav.map((n) => (
+          <a href={n.href} class={`nav-link ${active === n.key ? "is-active" : ""}`}>{n.label}</a>
+        ))}
+      </nav>
+      <a class="btn btn-ghost nav-cta" href={`${base}/membership`}>Become a Member</a>
+      <button class="nav-toggle" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </header>
+    <div class="mobile-menu" hidden>
+      {nav.map((n) => (<a href={n.href} class="mobile-link">{n.label}</a>))}
+      <a class="btn btn-solid" href={`${base}/membership`}>Become a Member</a>
+    </div>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <img src={`${base}/images/logo-light.png`} alt="Dienstag Cigar Lounge" />
+          <p class="foot-tag">A place to slow down. Cigars, whiskey, and good company in North Liberty.</p>
+        </div>
+        <div class="foot-col">
+          <h4>Visit</h4>
+          <p>680 Mead Drive, Suite 5<br />North Liberty, Iowa</p>
+          <p class="muted">Inside WineStyles — full bar next door.</p>
+        </div>
+        <div class="foot-col">
+          <h4>Explore</h4>
+          {nav.map((n) => (<a href={n.href} class="foot-link">{n.label}</a>))}
+        </div>
+      </div>
+      <div class="foot-base">
+        <span>© {new Date().getFullYear()} Dienstag Cigar Lounge</span>
+        <span class="muted">North Liberty, Iowa</span>
+      </div>
+    </footer>
+
+    <style is:global>
+      :root {
+        /* Abetterlou-derived system, gold accent per brand */
+        --espresso: #140b00;      /* canvas */
+        --espresso-2: #1d1206;    /* raised surface */
+        --walnut: #33260f;        /* hairline / borders */
+        --cream: #fff1e0;         /* primary text */
+        --cream-dim: #c9bcac;     /* secondary text */
+        --gold: #c8a35e;          /* single warm accent */
+        --gold-deep: #a9834a;
+        --font-display: "Cormorant Garamond", Georgia, serif;
+        --font-body: "Manrope", system-ui, sans-serif;
+        --pill: 9999px;
+        --card: 6px;
+        --section: 96px;
+        --gap: 12px;
+        --max: 1160px;
+      }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      html { scroll-behavior: smooth; }
+      body {
+        background: var(--espresso);
+        color: var(--cream);
+        font-family: var(--font-body);
+        font-size: 16px;
+        line-height: 1.65;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+      }
+      h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 500; line-height: 1.05; letter-spacing: -0.01em; }
+      h1 { font-size: clamp(2.8rem, 7vw, 5.5rem); }
+      h2 { font-size: clamp(2rem, 4.5vw, 3.4rem); }
+      h3 { font-size: clamp(1.4rem, 2.5vw, 1.9rem); }
+      p { color: var(--cream-dim); }
+      a { color: inherit; text-decoration: none; }
+      img { max-width: 100%; display: block; }
+      .wrap { width: min(100% - 48px, var(--max)); margin-inline: auto; }
+      .eyebrow {
+        font-family: var(--font-body); font-size: 0.72rem; font-weight: 600;
+        letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold);
+      }
+      .muted { color: var(--cream-dim); opacity: 0.7; }
+
+      /* Buttons — pill radius, no shadows, depth via tone */
+      .btn {
+        display: inline-flex; align-items: center; gap: 0.5em;
+        font-family: var(--font-body); font-weight: 600; font-size: 0.9rem;
+        letter-spacing: 0.02em; padding: 0.85em 1.7em; border-radius: var(--pill);
+        border: 1px solid transparent; cursor: pointer; transition: all 0.25s ease;
+      }
+      .btn-solid { background: var(--gold); color: var(--espresso); }
+      .btn-solid:hover { background: var(--cream); }
+      .btn-ghost { border-color: var(--gold-deep); color: var(--cream); background: transparent; }
+      .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+      /* Header */
+      .site-header {
+        position: sticky; top: 0; z-index: 50;
+        display: flex; align-items: center; gap: 2rem;
+        padding: 0.9rem clamp(20px, 4vw, 40px);
+        background: rgba(20, 11, 0, 0.82); backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--walnut);
+      }
+      .brand img { height: 46px; width: auto; }
+      .nav { display: flex; gap: 1.9rem; margin-left: auto; }
+      .nav-link {
+        font-size: 0.82rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+        color: var(--cream-dim); padding-bottom: 3px; border-bottom: 1px solid transparent; transition: 0.2s;
+      }
+      .nav-link:hover, .nav-link.is-active { color: var(--cream); border-color: var(--gold); }
+      .nav-cta { margin-left: 0.5rem; }
+      .nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: 0; cursor: pointer; padding: 6px; }
+      .nav-toggle span { width: 26px; height: 2px; background: var(--cream); transition: 0.3s; }
+
+      .mobile-menu { display: none; flex-direction: column; gap: 1rem; padding: 1.5rem clamp(20px,4vw,40px) 2rem; background: var(--espresso-2); border-bottom: 1px solid var(--walnut); }
+      .mobile-link { font-family: var(--font-display); font-size: 1.5rem; color: var(--cream); }
+
+      /* Sections & cards */
+      section { padding-block: var(--section); }
+      .card {
+        background: var(--espresso-2); border: 1px solid var(--walnut);
+        border-radius: var(--card); padding: 1.9rem;
+      }
+      .hairline { height: 1px; background: var(--walnut); border: 0; }
+
+      /* Scroll reveal — fail OPEN (visible without JS) */
+      .rise { transition: opacity .7s ease, transform .7s ease; }
+      html.js .rise { opacity: 0; transform: translateY(18px); }
+      html.js .rise.in { opacity: 1; transform: none; }
+      @media (prefers-reduced-motion: reduce) { html.js .rise, .rise { opacity: 1; transform: none; transition: none; } }
+
+      /* Footer */
+      .site-footer { border-top: 1px solid var(--walnut); padding: 4rem clamp(20px,4vw,40px) 2rem; background: var(--espresso-2); }
+      .foot-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 2.5rem; max-width: var(--max); margin-inline: auto; }
+      .foot-brand img { height: 60px; margin-bottom: 1rem; }
+      .foot-tag { max-width: 34ch; }
+      .foot-col h4 { font-family: var(--font-body); font-size: 0.72rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+      .foot-link { display: block; color: var(--cream-dim); padding: 0.25rem 0; }
+      .foot-link:hover { color: var(--cream); }
+      .foot-base { display: flex; justify-content: space-between; max-width: var(--max); margin: 3rem auto 0; padding-top: 1.5rem; border-top: 1px solid var(--walnut); font-size: 0.8rem; color: var(--cream-dim); }
+
+      @media (max-width: 860px) {
+        .nav, .nav-cta { display: none; }
+        .nav-toggle { display: flex; }
+        .foot-grid { grid-template-columns: 1fr; gap: 2rem; }
+        .foot-base { flex-direction: column; gap: 0.5rem; }
+      }
+    </style>
+
+    <script>
+      document.documentElement.classList.add("js");
+      const risers = [...document.querySelectorAll(".rise")];
+      const io = new IntersectionObserver((es) => es.forEach((e) => {
+        if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+      }), { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
+      risers.forEach((el) => io.observe(el));
+      setTimeout(() => risers.forEach((el) => el.classList.add("in")), 2500);
+
+      const toggle = document.querySelector(".nav-toggle");
+      const menu = document.querySelector(".mobile-menu");
+      toggle?.addEventListener("click", () => {
+        const open = menu.hasAttribute("hidden");
+        if (open) { menu.removeAttribute("hidden"); menu.style.display = "flex"; }
+        else { menu.setAttribute("hidden", ""); menu.style.display = "none"; }
+        toggle.setAttribute("aria-expanded", String(open));
+      });
+    </script>
+  </body>
+</html>

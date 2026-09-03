@@ -1,0 +1,86 @@
+---
+import Layout from "../layouts/Layout.astro";
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+<Layout title="Selection — Dienstag Cigar Lounge" active="selection" description="Cigars, whiskey, and wine at Dienstag Cigar Lounge in North Liberty, Iowa.">
+  <section class="page-head">
+    <div class="wrap">
+      <p class="eyebrow rise">The Selection</p>
+      <h1 class="rise">What's on the shelf.</h1>
+      <p class="lead rise">A humidor kept honest and a full bar next door. Here's the shape of what you'll find — the exact list rotates, so ask the staff what's fresh.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="split">
+        <div class="rise">
+          <p class="eyebrow">Cigars</p>
+          <h2>The humidor</h2>
+          <p>Our cigars are held at proper humidity and chosen with a range in mind — an easygoing everyday smoke, a few bolder full-bodied sticks, and rotating finds worth asking about. New to it? Tell us what you drink and we'll point you somewhere good.</p>
+          <ul class="feature-list">
+            <li>Mild &amp; approachable — for a slow first hour</li>
+            <li>Medium &amp; balanced — the everyday standbys</li>
+            <li>Full-bodied &amp; bold — for the seasoned palate</li>
+            <li>Rotating features — limited and worth trying</li>
+          </ul>
+        </div>
+        <div class="rise panel" style={`background-image:url(${base}/images/humidor.jpg)`}></div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hairline wrap-line" />
+
+  <section>
+    <div class="wrap">
+      <div class="split reverse">
+        <div class="rise">
+          <p class="eyebrow">From the bar</p>
+          <h2>Whiskey &amp; wine, next door</h2>
+          <p>We share our space with WineStyles, so the bar is always a few steps away. Pour a whiskey to sit beside your cigar, open a bottle of wine, or let the bartender talk you into a pairing you didn't expect.</p>
+          <div class="pair-grid">
+            <div class="pair card"><h3>Whiskey</h3><p>Bourbon, rye, and a shelf worth working through — neat, on a rock, or however you take it.</p></div>
+            <div class="pair card"><h3>Wine</h3><p>A full WineStyles selection next door — reds that stand up to a bold cigar, and lighter pours for the in-between.</p></div>
+          </div>
+        </div>
+        <div class="rise panel panel-2" style={`background-image:url(${base}/images/whiskey.jpg)`}></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap band-inner rise">
+      <div>
+        <p class="eyebrow">Come taste for yourself</p>
+        <h2>The shelf is best seen in person.</h2>
+      </div>
+      <a class="btn btn-solid" href={`${base}/contact`}>Plan a Visit</a>
+    </div>
+  </section>
+
+  <style>
+    .page-head { padding-top: 5rem; padding-bottom: 2rem; }
+    .page-head h1 { margin: 0.6rem 0 1.2rem; }
+    .lead { font-size: 1.2rem; max-width: 52ch; color: var(--cream); opacity: 0.9; }
+    .split { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 3rem; align-items: center; }
+    .split.reverse .panel { order: -1; }
+    .split h2 { margin: 0.4rem 0 1rem; }
+    .feature-list { list-style: none; margin-top: 1.4rem; }
+    .feature-list li { padding: 0.7rem 0; border-bottom: 1px solid var(--walnut); color: var(--cream); }
+    .feature-list li::before { content: "—"; color: var(--gold); margin-right: 0.8rem; }
+    .panel { min-height: 380px; border-radius: var(--card); border: 1px solid var(--walnut); background: radial-gradient(120% 100% at 30% 20%, #241708 0%, #140b00 70%); background-size: cover; background-position: center; position: relative; overflow: hidden; }
+    .panel::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,11,0,0.15), rgba(20,11,0,0.45)); }
+    .panel-2 { background: radial-gradient(120% 100% at 70% 30%, #2a1c0a 0%, #140b00 72%); }
+    .pair-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap); margin-top: 1.5rem; }
+    .pair h3 { margin-bottom: 0.5rem; }
+    .wrap-line { width: min(100% - 48px, var(--max)); margin-inline: auto; }
+    .band { background: linear-gradient(120deg,#1d1206,#241708); border-block: 1px solid var(--walnut); }
+    .band-inner { display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+    @media (max-width: 860px) {
+      .split, .pair-grid { grid-template-columns: 1fr; }
+      .split.reverse .panel { order: 0; }
+      .panel { min-height: 220px; }
+    }
+  </style>
+</Layout>
