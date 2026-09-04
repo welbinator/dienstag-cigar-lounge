@@ -1,0 +1,92 @@
+---
+import Layout from "../layouts/Layout.astro";
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+<Layout title="About — Dienstag Cigar Lounge" active="about" description="The story behind Dienstag Cigar Lounge in North Liberty, Iowa.">
+  <section class="page-head">
+    <div class="wrap">
+      <p class="eyebrow rise">Our Story</p>
+      <h1 class="rise">Founded on a<br /><em>Tuesday.</em></h1>
+      <p class="lead rise">Dienstag is German for "Tuesday" — the quiet middle of the week, when the noise dies down and there's finally room to sit with a good cigar. That's the whole idea, right there in the name.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap two-col">
+      <div class="rise">
+        <p class="eyebrow">The Founder</p>
+        <h2>A habit that became a home.</h2>
+      </div>
+      <div class="rise">
+        <p>Our founder, Otto Brandt, spent twenty years in the trades before he ever thought about opening a lounge. The ritual started small — a single cigar on Tuesday evenings, out on the back porch, once the week's chaos had settled.</p>
+        <p>What began as one man's weekly reset slowly turned into an open invitation. Friends started showing up. Then friends of friends. The porch got crowded, the conversations got better, and Otto realized North Liberty didn't have a proper room for exactly this: unhurried company, a good smoke, and nowhere else to be.</p>
+        <p>So he built one.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hairline wrap-line" />
+
+  <section>
+    <div class="wrap">
+      <p class="eyebrow rise">How it came together</p>
+      <h2 class="rise section-title">From a porch to a partnership.</h2>
+      <div class="grid-3">
+        <article class="card rise">
+          <span class="card-mark">01</span>
+          <h3>The Tuesday ritual</h3>
+          <p>It started with one cigar a week and a stubborn belief that the best conversations happen slowly. That belief still runs the place.</p>
+        </article>
+        <article class="card rise">
+          <span class="card-mark">02</span>
+          <h3>The right neighbors</h3>
+          <p>When the space beside WineStyles opened up, the fit was obvious — a full bar next door and a lounge that finally had room to breathe.</p>
+        </article>
+        <article class="card rise">
+          <span class="card-mark">03</span>
+          <h3>Built to last</h3>
+          <p>Leather that wears in, wood that ages well, and a humidor kept honest. Nothing here is meant to be temporary.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap band-inner rise">
+      <div>
+        <p class="eyebrow">The invitation still stands</p>
+        <h2>Pull up a chair.</h2>
+        <p class="band-sub">Otto's porch only held so many. This room holds a few more — and there's a locker with your name on it.</p>
+      </div>
+      <a class="btn btn-solid" href={`${base}/membership`}>Become a Member</a>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap placeholder-note rise">
+      <p class="muted"><strong>Note for the owner:</strong> the founder story above is placeholder copy written to set the tone — swap in the real name, background, and origin whenever you're ready, and I'll finalize it.</p>
+    </div>
+  </section>
+
+  <style>
+    .page-head { padding-top: 5rem; padding-bottom: 2rem; }
+    .page-head h1 { margin: 0.6rem 0 1.2rem; }
+    .page-head h1 em { color: var(--gold); font-style: italic; }
+    .lead { font-size: 1.2rem; max-width: 54ch; color: var(--cream); opacity: 0.9; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: start; }
+    .two-col h2 { margin-top: 0.5rem; }
+    .two-col p + p { margin-top: 1rem; }
+    .wrap-line { width: min(100% - 48px, var(--max)); margin-inline: auto; }
+    .section-title { margin: 0.5rem 0 2.5rem; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap); }
+    .card-mark { font-family: var(--font-display); font-size: 1.1rem; color: var(--gold); letter-spacing: 0.1em; }
+    .card h3 { margin: 0.8rem 0 0.6rem; }
+    .band { background: linear-gradient(120deg,#0f1216,#16202b); border-block: 1px solid var(--walnut); }
+    .band-inner { display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+    .band-inner h2 { margin: 0.4rem 0 0.8rem; }
+    .band-sub { max-width: 48ch; }
+    .placeholder-note { border: 1px dashed var(--walnut); border-radius: var(--card); padding: 1rem 1.4rem; }
+    .placeholder-note p { font-size: 0.85rem; }
+    @media (max-width: 860px) { .two-col, .grid-3, .band-inner { grid-template-columns: 1fr; } }
+  </style>
+</Layout>
