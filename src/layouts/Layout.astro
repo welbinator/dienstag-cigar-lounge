@@ -76,13 +76,13 @@ const nav = [
     <style is:global>
       :root {
         /* Abetterlou-derived system, gold accent per brand */
-        --espresso: #140b00;      /* canvas */
-        --espresso-2: #1d1206;    /* raised surface */
-        --walnut: #33260f;        /* hairline / borders */
+        --espresso: #000000;      /* canvas (was espresso brown, now black) */
+        --espresso-2: #0f1216;    /* raised surface — near-black, cool */
+        --walnut: #223140;        /* hairline / borders — cool blue-gray */
         --cream: #fff1e0;         /* primary text */
-        --cream-dim: #c9bcac;     /* secondary text */
-        --gold: #c8a35e;          /* single warm accent */
-        --gold-deep: #a9834a;
+        --cream-dim: #b9c2cc;     /* secondary text — cool neutral */
+        --gold: #3f79a8;          /* accent — legible Prussian blue on black */
+        --gold-deep: #1f4a6e;     /* deep Prussian blue for fills/borders */
         --font-display: "Cormorant Garamond", Georgia, serif;
         --font-body: "Manrope", system-ui, sans-serif;
         --pill: 9999px;
@@ -133,7 +133,7 @@ const nav = [
         position: sticky; top: 0; z-index: 50;
         display: flex; align-items: center; gap: 2rem;
         padding: 0.9rem clamp(20px, 4vw, 40px);
-        background: rgba(20, 11, 0, 0.82); backdrop-filter: blur(10px);
+        background: rgba(0, 0, 0, 0.82); backdrop-filter: blur(10px);
         border-bottom: 1px solid var(--walnut);
       }
       .brand img { height: 46px; width: auto; }
