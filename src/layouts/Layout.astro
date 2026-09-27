@@ -75,6 +75,14 @@ const nav = [
     </footer>
 
     <style is:global>
+      @font-face {
+        font-family: "Blood and Blade";
+        src: url("/fonts/bloodandblade.woff2") format("woff2"),
+             url("/fonts/bloodandblade.ttf") format("truetype");
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
       :root {
         /* Abetterlou-derived system, gold accent per brand */
         --espresso: #000000;      /* canvas (was espresso brown, now black) */
@@ -86,6 +94,7 @@ const nav = [
         --gold-deep: #1f4a6e;     /* deep Prussian blue for fills/borders */
         --font-display: "Cormorant Garamond", Georgia, serif;
         --font-body: "Manrope", system-ui, sans-serif;
+        --font-blade: "Blood and Blade", "Cormorant Garamond", Georgia, serif;
         --pill: 9999px;
         --card: 6px;
         --section: 96px;
@@ -112,8 +121,8 @@ const nav = [
       img { max-width: 100%; display: block; }
       .wrap { width: min(100% - 48px, var(--max)); margin-inline: auto; }
       .eyebrow {
-        font-family: var(--font-body); font-size: 0.72rem; font-weight: 600;
-        letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold);
+        font-family: var(--font-blade); font-size: 1.35rem; font-weight: 400;
+        letter-spacing: 0.06em; text-transform: none; color: var(--gold);
       }
       .muted { color: var(--cream-dim); opacity: 0.7; }
 
