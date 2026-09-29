@@ -1,0 +1,86 @@
+---
+import Layout from "../layouts/Layout.astro";
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+
+// Two free, self-hosted blackletter fonts under the SIL Open Font License.
+const fonts = [
+  {
+    id: "unifrakturcook",
+    label: "UnifrakturCook",
+    note: "SIL Open Font License · from Google Fonts · free for commercial + web",
+    stack: '"UnifrakturCook", "Blood and Blade", Georgia, serif',
+  },
+  {
+    id: "catfrankendeutsch",
+    label: "CAT FrankenDeutsch",
+    note: "SIL Open Font License · Peter Wiegel / CAT-Fonts · free for commercial + web",
+    stack: '"CAT FrankenDeutsch", "Blood and Blade", Georgia, serif',
+  },
+];
+---
+<Layout title="Font Test — Smoke Like a Kaiser" active="">
+  <style define:vars={{}}>
+    /* Two free OFL blackletter faces, self-hosted */
+    @font-face {
+      font-family: "UnifrakturCook";
+      src: url("/fonts/unifrakturcook.woff2") format("woff2");
+      font-weight: 700; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: "CAT FrankenDeutsch";
+      src: url("/fonts/catfrankendeutsch.woff2") format("woff2");
+      font-weight: 400; font-style: normal; font-display: swap;
+    }
+
+    .ft-intro { padding: 3.5rem 0 1rem; }
+    .ft-intro h1 { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); }
+    .ft-intro p { max-width: 60ch; margin-top: 0.8rem; }
+
+    /* Hero clone — mirrors the real homepage hero */
+    .ft-hero { position: relative; min-height: 78vh; display: flex; align-items: center; border-block: 1px solid var(--walnut); }
+    .ft-hero-media { position: absolute; inset: 0; background-size: cover; background-position: center; background-color: #000; }
+    .ft-hero-veil { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.72) 55%, rgba(0,0,0,0.97) 100%); }
+    .ft-hero-inner { position: relative; z-index: 2; padding-block: 5rem; }
+    .ft-hero .eyebrow { font-family: var(--font-body); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); }
+    .ft-hero h2.ft-head {
+      margin: 0.6rem 0 1.4rem; font-weight: 400; letter-spacing: 0.02em; line-height: 1.04;
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+    }
+    .ft-hero h2.ft-head em { color: var(--gold); font-style: normal; }
+    .ft-hero-sub { font-size: 1.2rem; max-width: 46ch; color: var(--cream); opacity: 0.9; }
+    .ft-hero-actions { display: flex; gap: 1rem; margin-top: 2.2rem; flex-wrap: wrap; }
+
+    .ft-tag {
+      display: inline-block; font-family: var(--font-body); font-size: 0.7rem; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold);
+      border: 1px solid var(--gold-deep); border-radius: var(--pill);
+      padding: 0.4em 1em; margin-bottom: 1.2rem;
+    }
+    .ft-note { font-size: 0.85rem; color: var(--cream-dim); margin-top: 1.6rem; opacity: 0.8; }
+  </style>
+
+  <section class="ft-intro">
+    <div class="wrap">
+      <h1>Blackletter font preview</h1>
+      <p>The same Dienstag hero, rendered once with each free (SIL Open Font License) blackletter font applied to the <strong>“Smoke like a Kaiser.”</strong> heading. Both are self-hosted and cleared for commercial + web use. The current live site uses “Blood and Blade.”</p>
+    </div>
+  </section>
+
+  {fonts.map((f) => (
+    <section class="ft-hero">
+      <div class="ft-hero-media" style={`background-image: url(${base}/images/hero.jpg)`}></div>
+      <div class="ft-hero-veil"></div>
+      <div class="wrap ft-hero-inner">
+        <span class="ft-tag">{f.label}</span>
+        <p class="eyebrow">North Liberty · Iowa</p>
+        <h2 class="ft-head" style={`font-family: ${f.stack}`}>Smoke like<br /><em>a Kaiser.</em></h2>
+        <p class="ft-hero-sub">Dienstag is a cigar lounge built for the unhurried hour — a good smoke, a pour from the bar next door, and no reason to check the time.</p>
+        <div class="ft-hero-actions">
+          <a class="btn btn-solid" href={`${base}/membership`}>Become a Member</a>
+          <a class="btn btn-ghost" href={`${base}/selection`}>See the Selection</a>
+        </div>
+        <p class="ft-note">{f.note}</p>
+      </div>
+    </section>
+  ))}
+</Layout>
