@@ -1,4 +1,0 @@
-UnifrakturCook is licensed under the SIL Open Font License, Version 1.1.
-Copyright (c) j. 'mach' wust, Peter Wiegel, and the UnifrakturCook project.
-Source: Google Fonts (https://fonts.google.com/specimen/UnifrakturCook)
-Full OFL text: https://openfontlicense.org

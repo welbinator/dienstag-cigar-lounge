@@ -5,18 +5,6 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 // Two free, self-hosted blackletter fonts under the SIL Open Font License.
 const fonts = [
   {
-    id: "unifrakturcook",
-    label: "UnifrakturCook",
-    note: "SIL Open Font License · from Google Fonts · free for commercial + web",
-    stack: '"UnifrakturCook", "Blood and Blade", Georgia, serif',
-  },
-  {
-    id: "catfrankendeutsch",
-    label: "CAT FrankenDeutsch",
-    note: "SIL Open Font License · Peter Wiegel / CAT-Fonts · free for commercial + web",
-    stack: '"CAT FrankenDeutsch", "Blood and Blade", Georgia, serif',
-  },
-  {
     id: "cathohenzollern",
     label: "CAT Hohenzollern",
     note: "SIL Open Font License · Peter Wiegel / CAT-Fonts · free for commercial + web",
@@ -39,16 +27,6 @@ const fonts = [
 <Layout title="Font Test — Smoke Like a Kaiser" active="">
   <style define:vars={{}}>
     /* Two free OFL blackletter faces, self-hosted */
-    @font-face {
-      font-family: "UnifrakturCook";
-      src: url("/fonts/unifrakturcook.woff2") format("woff2");
-      font-weight: 700; font-style: normal; font-display: swap;
-    }
-    @font-face {
-      font-family: "CAT FrankenDeutsch";
-      src: url("/fonts/catfrankendeutsch.woff2") format("woff2");
-      font-weight: 400; font-style: normal; font-display: swap;
-    }
     @font-face {
       font-family: "CAT Hohenzollern";
       src: url("/fonts/cathohenzollern.woff2") format("woff2");
