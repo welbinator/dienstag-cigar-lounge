@@ -16,6 +16,24 @@ const fonts = [
     note: "SIL Open Font License · Peter Wiegel / CAT-Fonts · free for commercial + web",
     stack: '"CAT FrankenDeutsch", "Blood and Blade", Georgia, serif',
   },
+  {
+    id: "cathohenzollern",
+    label: "CAT Hohenzollern",
+    note: "SIL Open Font License · Peter Wiegel / CAT-Fonts · free for commercial + web",
+    stack: '"CAT Hohenzollern", "Blood and Blade", Georgia, serif',
+  },
+  {
+    id: "civitypefg",
+    label: "Civitype FG",
+    note: "FontGrube AH free license · commercial + webfont use permitted",
+    stack: '"Civitype FG", "Blood and Blade", Georgia, serif',
+  },
+  {
+    id: "bayern",
+    label: "Bayern",
+    note: "Design Science License (copyleft) · free for commercial + web · no ß, limited glyphs",
+    stack: '"Bayern", "Blood and Blade", Georgia, serif',
+  },
 ];
 ---
 <Layout title="Font Test — Smoke Like a Kaiser" active="">
@@ -29,6 +47,21 @@ const fonts = [
     @font-face {
       font-family: "CAT FrankenDeutsch";
       src: url("/fonts/catfrankendeutsch.woff2") format("woff2");
+      font-weight: 400; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: "CAT Hohenzollern";
+      src: url("/fonts/cathohenzollern.woff2") format("woff2");
+      font-weight: 400; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: "Civitype FG";
+      src: url("/fonts/civitypefg.woff2") format("woff2");
+      font-weight: 400; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: "Bayern";
+      src: url("/fonts/bayern.woff2") format("woff2");
       font-weight: 400; font-style: normal; font-display: swap;
     }
 
